@@ -1,0 +1,67 @@
+#!/bin/sh
+
+set -e
+
+install_dependencies() {
+  sudo apt update
+
+  sudo apt install -y \
+    xinit \
+    i3 \
+    i3lock \
+    nm-tray \
+    gnome-keyring \
+    autorandr \
+    nitrogen \
+    arandr \
+    picom \
+    dunst \
+    pulseaudio \
+    pulseaudio-utils \
+    pulseaudio-module-bluetooth \
+    bluetooth \
+    blueman \
+    pavucontrol \
+    brightnessctl \
+    flameshot \
+    thunar \
+    alacritty \
+    suckless-tools # for dmenu
+}
+
+create_symlinks() {
+  mkdir -p "$HOME/.config/i3"
+  mkdir -p "$HOME/.config/i3status"
+
+  ln -sf "$PWD/i3/config" "$HOME/.config/i3/config"
+  ln -sf "$PWD/i3status/config" "$HOME/.config/i3status/config"
+  ln -sf "$PWD/xinit/xinitrc" "$HOME/.xinitrc"
+  echo "Symlinks created successfully."
+}
+
+help() {
+  echo "Usage: ./install [-i] (install dependencies) [-s] (create symlinks)"
+  exit 1
+}
+
+main() {
+  if [ $OPTIND -eq 1 ] && [ $# -eq 0 ]; then
+    help
+  fi
+
+  while getopts ":is" opt; do
+    case ${opt} in
+      i)
+        install_dependencies
+        ;;
+      s)
+        create_symlinks
+        ;;
+      *)
+        help
+        ;;
+    esac
+  done
+}
+
+main "$@"
