@@ -51,6 +51,8 @@ make link
 - `$mod+Arrow keys` - Move focused window
 - `$mod+Shift+h/j/k/l` - Resize window
 - `$mod+f` - Toggle fullscreen
+- `$mod+i` - Split in horizontal orientation
+- `$mod+m` - Split in vertical orientation
 - `$mod+e` - Toggle split orientation
 - `$mod+d` - Toggle tabbed
 - `$mod+Shift+space` - Toggle floating mode
