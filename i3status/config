@@ -20,17 +20,17 @@ order += "tztime local"
 
 wireless _first_ {
         format_up = "W:%quality"
-        format_down = "W: down"
+        format_down = "W: X"
 }
 
 ethernet _first_ {
         format_up = "E: %ip (%speed)"
-        format_down = "E: down"
+        format_down = "E: X"
 }
 
 battery all {
         format = "B: %status%percentage"
-        format_down = "x"
+        format_down = "B: X"
         status_chr = "+"
         status_bat = "-"
         status_unk = "?"
@@ -53,5 +53,5 @@ tztime local {
 
 volume master {
         format = "V: %volume"
-        format_muted = "V: m"
+        format_muted = "V: M"
 }
